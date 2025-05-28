@@ -1,0 +1,14 @@
+---
+command: blackjack
+requires: [economy, games]
+args:
+  - name: bet
+    type: number
+---
+
+import Argument from '../../components/Argument.astro';
+
+Starts a [Blackjack][blackjack] game, placing a
+<Argument name="bet" type="number" /> of currency.
+
+[blackjack]: https://en.wikipedia.org/wiki/Blackjack

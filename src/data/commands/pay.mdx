@@ -1,0 +1,24 @@
+---
+command: pay
+requires: [economy]
+args:
+  - name: user
+    type: user
+  - name: amount
+    type: number
+---
+
+import Argument from '../../components/Argument.astro';
+
+<p>
+  Pays <Argument name="amount" type="number" /> to
+  <Argument name="user" type="user" />.
+</p>
+
+<p>
+  Note that this command does not "create" currency—you cannot pay
+  <Argument name="user" type="user" /> if your balance is insufficient.
+</p>
+
+If you have admin privileges and wish to "create" currency, use
+[/give](/commands/give).

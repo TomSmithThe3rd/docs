@@ -1,0 +1,99 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const ICON_MAP = {
+  user: 'mdi:account',
+  string: 'mdi:cursor-text',
+  number: 'mdi:numeric',
+  enum: 'mdi:format-list-bulleted',
+};
+
+interface Props {
+  name: string;
+  type: 'user' | 'string' | 'number' | 'enum';
+  optional?: boolean;
+  value?: string;
+}
+
+const { name, type, optional, value } = Astro.props;
+---
+
+<span class:list={['arg', type]}>
+  {!value && <Icon name={ICON_MAP[type]} />}
+  {value ?? name}{
+    !value && optional && <Icon name="mdi:help" class="optional" />
+  }
+</span>
+
+<style>
+  @layer starlight.components {
+    :global(:root) {
+      --sl-arg-user-border: var(--sl-color-accent);
+      --sl-arg-user-bg: var(--sl-color-accent-low);
+      --sl-arg-user-text: var(--sl-color-accent-high);
+
+      --sl-arg-string-border: var(--sl-color-green);
+      --sl-arg-string-bg: var(--sl-color-green-low);
+      --sl-arg-string-text: var(--sl-color-green-high);
+
+      --sl-arg-number-border: var(--sl-color-red);
+      --sl-arg-number-bg: var(--sl-color-red-low);
+      --sl-arg-number-text: var(--sl-color-red-high);
+
+      --sl-arg-enum-border: var(--sl-color-purple);
+      --sl-arg-enum-bg: var(--sl-color-purple-low);
+      --sl-arg-enum-text: var(--sl-color-purple-high);
+    }
+
+    :global([data-theme='light']:root) {
+      --sl-arg-user-border: var(--sl-color-accent-high);
+      --sl-arg-string-border: var(--sl-color-green-high);
+      --sl-arg-number-border: var(--sl-color-red-high);
+      --sl-arg-enum-border: var(--sl-color-purple-high);
+    }
+
+    .optional {
+      margin-top: 0;
+    }
+
+    .user {
+      --sl-color-bg-arg: var(--sl-arg-user-bg);
+      --sl-color-border-arg: var(--sl-arg-user-border);
+      --sl-color-text-arg: var(--sl-arg-user-text);
+    }
+
+    .string {
+      --sl-color-bg-arg: var(--sl-arg-string-bg);
+      --sl-color-border-arg: var(--sl-arg-string-border);
+      --sl-color-text-arg: var(--sl-arg-string-text);
+    }
+
+    .number {
+      --sl-color-bg-arg: var(--sl-arg-number-bg);
+      --sl-color-border-arg: var(--sl-arg-number-border);
+      --sl-color-text-arg: var(--sl-arg-number-text);
+    }
+
+    .enum {
+      --sl-color-bg-arg: var(--sl-arg-enum-bg);
+      --sl-color-border-arg: var(--sl-arg-enum-border);
+      --sl-color-text-arg: var(--sl-arg-enum-text);
+    }
+
+    .arg {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      border: 1px solid var(--sl-color-border-arg);
+      border-radius: 0.25rem;
+      line-height: normal;
+      color: var(--sl-color-text-arg);
+      background-color: var(--sl-color-bg-arg);
+      font-family: var(--sl-font-system-mono);
+      overflow-wrap: anywhere;
+      font-size: var(--sl-text-sm);
+      padding: 0.125rem 0.25rem;
+      margin: 0 0.25rem;
+    }
+  }
+</style>

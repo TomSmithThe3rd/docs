@@ -1,0 +1,39 @@
+---
+title: Messages
+sidebar:
+  order: 2
+---
+
+import { Card } from '@astrojs/starlight/components';
+
+Engauge tracks messages you send and rewards you with [XP](/overview/xp) for
+sending them.
+
+By default, sending a message nets you **15 XP**, but this can be configured per
+server on the [dashboard](/config/dashboard).
+
+Engauge does not store the contents of your messages or the times at which your
+messages were sent. It tracks message activity by increasing a numeric counter
+when messages are sent.
+
+## Spam prevention
+
+Engauge does **not reward you** for sending messages **multiple times a
+minute.** This means that you will only be rewarded for at most **one message a
+minute**.
+
+<Card title="Example" icon="magnifier">
+
+If the server you are chatting in is configured to give **15 XP** per message,
+you can earn **at most 75 XP** by sending multiple messages over a 5-minute
+period.
+
+</Card>
+
+Despite this, **message count** shown on the
+[leaderboard](/overview/leaderboard) does count multiple messages a minute.
+
+## Modifying message counts
+
+Unlike experience, message counts **cannot** be modified by administrators. See
+our policy on [data legitimacy](/setup/legitimacy).

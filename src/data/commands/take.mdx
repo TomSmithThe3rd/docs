@@ -1,0 +1,46 @@
+---
+command: take
+privileged: true
+args:
+  - name: user
+    type: user
+  - name: amount
+    type: number
+  - name: thing
+    type: enum
+---
+
+import Argument from '../../components/Argument.astro';
+import CommandBox from '../../components/CommandBox.astro';
+
+<p>
+  Takes
+  <Argument name="amount" type="number" /> of
+  <Argument name="thing" type="enum" /> from
+  <Argument name="user" type="user" />.
+</p>
+
+<p>
+  <Argument name="thing" type="enum" /> must be either <code>xp</code> or{' '}
+  <code>currency</code>.
+</p>
+
+#### Examples
+
+<CommandBox>
+  <span>/take</span>
+  <Argument name="user" type="user" value="@tomsmith" />
+  <Argument name="amount" type="number" value="100" />
+  <Argument name="amount" type="enum" value="xp" />
+</CommandBox>
+
+This command would take **100 XP** from the user `@tomsmith`.
+
+<CommandBox>
+  <span>/take</span>
+  <Argument name="user" type="user" value="@voximity" />
+  <Argument name="amount" type="number" value="500" />
+  <Argument name="amount" type="enum" value="currency" />
+</CommandBox>
+
+This command would take **E$5,000** from the user `@voximity`. (hey!)

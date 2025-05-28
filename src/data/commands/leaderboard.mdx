@@ -1,0 +1,21 @@
+---
+command: leaderboard
+args:
+  - name: page
+    type: number
+    optional: true
+---
+
+import Argument from '../../components/Argument.astro';
+
+Displays a leaderboard image for the top spots in this server.
+
+<p>
+  Each <Argument name="page" type="number" /> shows 10 members, so to see the
+  11th-21st members, use
+  <Argument name="page" type="number" value="2" />.
+</p>
+
+#### Preview
+
+TODO

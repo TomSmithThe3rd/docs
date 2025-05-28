@@ -1,0 +1,73 @@
+---
+import { getCollection, render } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { Aside } from '@astrojs/starlight/components';
+import Argument from '../../components/Argument.astro';
+import CommandBox from '../../components/CommandBox.astro';
+
+export const getStaticPaths = (async () => {
+  const commands = await getCollection('commands');
+  return commands.map((command) => ({
+    params: { id: command.id },
+    props: { command },
+  }));
+}) satisfies GetStaticPaths;
+
+const { command } = Astro.props;
+const { Content } = await render(command);
+
+const requires = Object.fromEntries(
+  command.data.requires.map((thing) => [thing, true]),
+);
+---
+
+<StarlightPage frontmatter={{ title: '/' + command.data.command }}>
+  <h4>Usage</h4>
+  {
+    command.data.privileged && (
+      <Aside type="caution" title="Permissions Required">
+        This command requires the <b>Manage Server</b> permission.
+      </Aside>
+    )
+  }
+  {
+    requires.games && (
+      <Aside type="note" title="Economy Games Required">
+        This command requires{' '}
+        <b>
+          <a href="/setup/economy/games">Economy Games</a>
+        </b>{' '}
+        to be enabled on your server.
+      </Aside>
+    )
+  }
+  {
+    requires.economy && !requires.games && (
+      <Aside type="note" title="Economy Required">
+        This command requires{' '}
+        <b>
+          <a href="/setup/economy">Economy</a>
+        </b>{' '}
+        to be enabled on your server.
+      </Aside>
+    )
+  }
+  {
+    requires.premium && (
+      <Aside type="caution" title="Premium Required">
+        This command requires{' '}
+        <b>
+          <a href="/setup/premium">Premium</a>
+        </b>{' '}
+        to be linked on your server.
+      </Aside>
+    )
+  }
+  <CommandBox>
+    /{command.data.command}
+    {command.data.args.map((arg) => <Argument {...arg} />)}
+  </CommandBox>
+  <h4>Description</h4>
+  <Content />
+</StarlightPage>
