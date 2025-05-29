@@ -4,7 +4,33 @@ sidebar:
   order: 1
 ---
 
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
 Engauge introduces the concept of **experience** (XP) to your Discord server. By
 default, members can earn XP by [chatting](/overview/messages) or
 [participating in voice channels](/overview/voice), but this can be configured
 per-server in the [dashboard](/setup/dashboard).
+
+You can view your experience from the [/stats](/commands/stats),
+[/rank](/commands/rank), and [/leaderboard](/commands/leaderboard) commands, the
+[leaderboard](/overview/leaderboard), or the [dashboard](/config/dashboard).
+
+## Levels
+
+As you earn experience, you will periodically level up. Depending on how the
+server you are interacting in is configured, you can earn
+[currency](/config/economy), [roles](/config/roles), and more as you level up.
+
+The frequency at which you level up depends on your current level. The higher
+your level, the more XP it takes to reach the next level.
+
+The exact frequency depends on the server's configured level formula.
+
+### Level formulas
+
+The **level formula** for a server dictates how much XP is required for a user
+to level up from each level. There are different formulas offered that allow for
+quicker (and slower) level up speeds.
+
+For more information, view the
+[main site leveling formulas page](https://engau.ge/formulas).

@@ -1,0 +1,57 @@
+---
+// Usage:
+// <Breadcrumbs path={["Dashboard:https://engau.ge/dash", "Server", "Roles"]} />
+
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  path: string[];
+}
+
+const COMMON_LINKS: Record<string, string> = {
+  '@dash': 'Dashboard:https://engau.ge/dash',
+}
+
+const { path } = Astro.props;
+---
+
+<span class="breadcrumbs">
+  {
+    path.map((item, i) => {
+      const [name, link] = (COMMON_LINKS[item] ?? item).split(':');
+      return (
+        <>
+          {i !== 0 && <Icon name="mdi:chevron-right" class="divider" />}
+          {link ? (
+            <a class="segment" href={link}>
+              {name}
+            </a>
+          ) : (
+            <span class="segment">{name}</span>
+          )}
+        </>
+      );
+    })
+  }
+</span>
+
+<style>
+  .breadcrumbs {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.1rem;
+  }
+
+  .divider {
+    color: var(--sl-color-gray-3);
+  }
+
+  .segment {
+    background: var(--sl-color-gray-6);
+    padding: 0.125rem 0.35rem;
+    line-height: normal;
+    border-radius: 0.25rem;
+    overflow-wrap: anywhere;
+    border: 1px solid var(--sl-color-gray-5);
+  }
+</style>

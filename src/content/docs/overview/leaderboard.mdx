@@ -4,4 +4,26 @@ sidebar:
   order: 2
 ---
 
-TODO
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+
+You can view your progress and others' in your server with the **Leaderboard**.
+
+The leaderboard can be accessed in several ways:
+
+- Through the [/leaderboard][lb] command
+- Through the web leaderboard
+
+## Site leaderboard
+
+<p>
+  Visit your server's web leaderboard by clicking the button linked by the
+  [/leaderboard][lb] command, or by visiting{' '}
+  <Breadcrumbs path={['@dash', 'Server', 'Leaderboard']} />.
+</p>
+
+## Customization
+
+In a future update, it will become possible to customize your site's leaderboard
+with [Engauge Premium](/setup/premium). Stay tuned!
+
+[lb]: /commands/leaderboard

@@ -1,11 +1,16 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
-
+import rehypeMathJax from 'rehype-mathjax';
 import icon from 'astro-icon';
+import remarkMath from 'remark-math';
 
 // https://astro.build/config
 export default defineConfig({
+  markdown: {
+    rehypePlugins: [rehypeMathJax],
+    remarkPlugins: [remarkMath],
+  },
   integrations: [
     starlight({
       title: 'Engauge',
@@ -80,6 +85,7 @@ export default defineConfig({
             'setup/roles',
             'setup/crates',
             { label: 'Economy', autogenerate: { directory: 'setup/economy' } },
+            'setup/premium',
             'setup/server-sites',
             'setup/audit',
             'setup/formatting',
@@ -100,6 +106,9 @@ export default defineConfig({
         },
         {
           label: 'API',
+          badge: {
+            text: 'Premium',
+          },
           autogenerate: {
             directory: 'api',
           },
