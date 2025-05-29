@@ -46,6 +46,21 @@ export default defineConfig({
           ],
         },
         {
+          label: 'Configuration',
+          items: [
+            'setup/getting-started',
+            'setup/dashboard',
+            'setup/import',
+            'setup/roles',
+            'setup/crates',
+            { label: 'Economy', autogenerate: { directory: 'setup/economy' } },
+            'setup/premium',
+            'setup/server-sites',
+            'setup/audit',
+            'setup/formatting',
+          ],
+        },
+        {
           label: 'Commands',
           collapsed: true,
           items: [
@@ -77,25 +92,8 @@ export default defineConfig({
           }),
         },
         {
-          label: 'Configuration',
-          items: [
-            'setup/getting-started',
-            'setup/dashboard',
-            'setup/import',
-            'setup/roles',
-            'setup/crates',
-            { label: 'Economy', autogenerate: { directory: 'setup/economy' } },
-            'setup/premium',
-            'setup/server-sites',
-            'setup/audit',
-            'setup/formatting',
-          ],
-        },
-        {
           label: 'Troubleshooting',
-          autogenerate: {
-            directory: 'troubleshooting',
-          },
+          items: [{ label: 'Voice Tracking', slug: 'overview/voice' }],
         },
         {
           label: 'Miscellaneous',

@@ -2,6 +2,62 @@
 title: Voice Tracking
 sidebar:
   order: 2
+
 ---
 
-TODO
+Engauge tracks the amount of time you spend in voice channels and rewards you
+with [XP](/overview/xp) for your participation.
+
+By default, every minute you spend in a voice channel nets you **4 XP**, but
+this can be configured per server on the [dashboard](/config/dashboard).
+
+Engauge cannot hear you or listen into your conversations; this feature works by
+monitoring when you join and leave voice channels.
+
+## Audibility
+
+Tracking occurs for a user when they are "audible," which is when a user
+
+- is in a voice channel
+- the voice channel has more than one person in it
+  - Bots don't count. Sorry, that's cheating!
+- they are not muted or server muted
+- they are not deafened or server deafened
+
+Engauge will "save" your voice minutes when you transition from being
+**audible** to **inaudible**, or vice versa. This naturally happens through
+muting or leaving the voice channel.
+
+:::note
+
+You will not see your voice minutes update until you mute or leave the voice
+channel.
+
+:::
+
+## Troubleshooting
+
+If Engauge is not properly tracking your voice activity, first
+[read above](#audibility) to ensure you understand the concept of
+**audibility**.
+
+However, if the issue persists you may try to
+
+- **Have the user mute or leave the voice channel they are in.**
+  - This will cause Engauge to "save" the voice minutes they are currently
+    accumulating. They will also level up if they earned enough XP due to their
+    voice XP.
+- **Check that Engauge can see the voice channel the user is in.**
+  - This is generally due to a lack of permissions, and can easily be fixed by
+    giving Engauge the **Administrator** permission.
+  - Alternatively, make sure Engauge can see the category and channel that the
+    voice channel is in.
+
+If none of these tips help, get in touch with us on
+[our support server](https://engau.ge/support) and we can take a look at your
+issue.
+
+## Modifying voice activity
+
+Unlike experience, voice minutes **cannot** be modified by administrators. See
+our policy on [data legitimacy](/setup/legitimacy).

@@ -2,4 +2,40 @@
 title: Getting Started
 ---
 
-TODO
+import { Steps } from '@astrojs/starlight/components';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+
+Interested in giving Engauge a try? Welcome aboard!
+
+## Adding Engauge
+
+<Steps>
+
+1. Login to the [Engauge site](https://engau.ge/dash)
+
+2. Locate your server on the <Breadcrumbs path={['@dash']} /> and click `Add`
+
+3. Follow Discord's steps to add Engauge to your server
+
+4. Edit your server following the links from the [/help](/commands/help) command
+   or via <Breadcrumbs path={['@dash', 'Your Server', 'Edit']} />
+
+</Steps>
+
+## Configuration
+
+<p>
+  Engauge is highly configurable. All of its configuration is done via the
+  [dashboard](/setup/dashboard), which can be accessed by navigating to
+  <Breadcrumbs path={['@dash', 'Your Server', 'Edit']} />.
+</p>
+
+The sidebar on the left of your server's screen will allow you to navigate to
+the settings pages for different aspects of the bot:
+
+- **Settings** contains most "quick" settings, like
+  [message](/overview/messages) and [voice](/overview/voice) [XP](/overview/xp)
+- The **Roles** page allows you to set custom [role rewards](/setup/roles)
+- **Crates** lets you create and drop custom [crates](/setup/crates)
+- **Economy** and **Shop** let you configure your server's
+  [economy](/setup/economy), if you want one

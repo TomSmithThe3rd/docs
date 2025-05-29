@@ -4,4 +4,47 @@ sidebar:
   order: 3
 ---
 
-TODO
+import PremiumRequired from '../../../components/PremiumRequired.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+
+:::caution[Feature Required]
+
+Economy must be **enabled** in your server before it can be used. Enable it via
+the [dashboard](/setup/dashboard).
+
+:::
+
+Engauge features a highly customizable economy system. Each server can
+[configure](/setup/economy) properties of the economy such as:
+
+- Currency symbol (default **E$**)
+- Currency on level up (default **E$150**)
+- Starting currency (default **E$500**)
+
+Currency is generally obtained by leveling up. It can be created by server
+administrators with the [/give](/commands/give) command. It can also be dropped
+by [crates](/setup/crates).
+
+## Payments
+
+If currency transfers are enabled, you can pay other members in your server with
+the [/pay](/commands/pay) command.
+
+## Shop
+
+<PremiumRequired />
+
+Servers can configure a [**shop**](/setup/economy/shop), where members can
+purchase roles and other items.
+
+If your server has a shop, visit it through <Breadcrumbs path={['@dash',
+'Server', 'Shop']} />.
+
+## Games
+
+<PremiumRequired />
+
+Servers can optionally enable [**economy games**](/setup/economy/games), where
+members can partake in interactive games using their balance.
+
+Currently, the only available game is [Blackjack](/commands/blackjack).
