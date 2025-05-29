@@ -10,6 +10,16 @@ export default defineConfig({
     starlight({
       title: 'Engauge',
       tableOfContents: false,
+      social: [
+        {
+          icon: 'github',
+          label: 'GitHub',
+          href: 'https://github.com/engauge-bot/docs',
+        },
+      ],
+      editLink: {
+        baseUrl: 'https://github.com/engauge-bot/docs/edit/master',
+      },
       customCss: [
         '@fontsource/roboto/400.css',
         '@fontsource/roboto/500.css',
