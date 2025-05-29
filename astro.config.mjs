@@ -13,6 +13,10 @@ export default defineConfig({
   },
   integrations: [
     starlight({
+      favicon: 'icon.svg',
+      logo: {
+        src: './src/assets/icon.svg',
+      },
       title: 'Engauge',
       tableOfContents: false,
       social: [
