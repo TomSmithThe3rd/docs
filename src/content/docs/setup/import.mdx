@@ -1,5 +1,83 @@
 ---
 title: Importing
+Description: Overview of import capabilities in Engauge.
 ---
 
-TODO
+import { TabItem, Tabs, Steps } from '@astrojs/starlight/components';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+
+Engauge supports importing data from a number of other leveling bots. Select one
+to view steps on how to import from it.
+
+:::danger
+
+Importing from another bot **permanently erases** all Engauge member data and
+replaces it with the imported data. If the operation fails, it's not promised
+that your old data will still exist. Please be positive you want to import
+before importing blindly!
+
+:::
+
+## Requirements
+
+<Tabs syncKey="bot">
+  <TabItem label="Mee6">
+    <p>To import from Mee6, the following conditions must be met:</p>
+    <ul>
+      <li>Your server must have an active Mee6 leaderboard.</li>
+      <li>Your server's Mee6 leaderboard must be set to public.</li>
+      <li>All role rewards must be tied to existing roles.</li>
+    </ul>
+    <h4>Making your server public</h4>
+    <p>
+      If your Mee6 server is not public, Engauge cannot read its data and import
+      properly.
+    </p>
+    <p>
+      Navigate to <Breadcrumbs path={['Mee6', 'Your Server', 'Leaderboard']} />{' '}
+      and check <b>Make my server's leaderboard public</b>.
+    </p>
+    <h4>Tying role rewards to existing roles</h4>
+    <p>
+      If you have some Mee6 role rewards that are tied to roles you've since
+      removed, they will fail to import in Engauge.
+    </p>
+    <p>
+      Please check your Mee6 configuration and remove any role rewards that are
+      now obsolete.
+    </p>
+  </TabItem>
+  <TabItem label="Lurkr">
+    <p>To import from Lurkr, the following conditions must be met:</p>
+    <ul>
+      <li>Your server must have an active Lurkr leaderboard.</li>
+    </ul>
+  </TabItem>
+</Tabs>
+
+## Importing
+
+<Tabs syncKey="bot">
+  <TabItem label="Mee6">
+    <Steps>
+      1. Ensure you've met the [requirements](#requirements)
+
+      2. Navigate to <Breadcrumbs path={['@dash', 'Your Server', 'Import', 'Mee6']} />
+
+      3. Click **I understand, import**
+    </Steps>
+    <p>Wait for the operation to complete and your data should be imported.</p>
+
+  </TabItem>
+  <TabItem label="Lurkr">
+    <Steps>
+      1. Ensure you've met the [requirements](#requirements)
+
+      2. Navigate to <Breadcrumbs path={['@dash', 'Your Server', 'Import', 'Lurkr']} />
+
+      3. Click **I understand, import**
+    </Steps>
+    <p>Wait for the operation to complete and your data should be imported.</p>
+
+  </TabItem>
+</Tabs>

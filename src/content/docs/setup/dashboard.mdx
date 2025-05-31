@@ -3,4 +3,38 @@ title: Dashboard
 description: Overview of the dashboard on Engauge's site
 ---
 
-TODO
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+
+Engauge is highly customizable, and its [web dashboard](https://engau.ge/dash)
+is the primary means of customizing your server.
+
+## Customizing your server
+
+:::caution[Permissions Required]
+
+To edit Engauge on the web dashboard, you need the **Manage Server** or
+**Administrator** permission in the server you are trying to edit.
+
+:::
+
+<p>
+  Navigate to <Breadcrumbs path={['@dash', 'Your Server', 'Edit']} /> to
+  configure Engauge in your server.
+</p>
+
+The **sidebar** on the left allows you to navigate to editing different parts of
+your server, such as [roles](/setup/roles) or [crates](/setup/crates).
+
+## Editors
+
+Configuring Engauge happens in its "editors," which are pages full of input
+fields and radio buttons that control Engauge's behavior. When you change one, a
+**save** button will appear at the bottom of your screen. Clicking it will
+commit your changes and save it. Your changes will go into effect immediately.
+
+:::tip
+
+Two moderators can edit settings at the same time. Only settings you change will
+be updated.
+
+:::
