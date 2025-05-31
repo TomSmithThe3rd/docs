@@ -4,6 +4,10 @@ import starlight from '@astrojs/starlight';
 import rehypeMathJax from 'rehype-mathjax';
 import icon from 'astro-icon';
 import remarkMath from 'remark-math';
+import starlightOpenAPIPlugin, {
+  openAPISidebarGroups,
+} from 'starlight-openapi';
+import 'dotenv/config';
 
 // https://astro.build/config
 export default defineConfig({
@@ -13,6 +17,17 @@ export default defineConfig({
   },
   integrations: [
     starlight({
+      plugins: [
+        starlightOpenAPIPlugin([
+          {
+            base: 'api',
+            schema:
+              process.env.SWAGGER_URL ??
+              'https://engau.ge/swagger/v1/swagger.json',
+            sidebar: { label: 'API Reference' },
+          },
+        ]),
+      ],
       favicon: 'icon.svg',
       logo: {
         src: './src/assets/icon.svg',
@@ -97,7 +112,12 @@ export default defineConfig({
         },
         {
           label: 'Troubleshooting',
-          items: [{ label: 'Voice Tracking', slug: 'overview/voice' }],
+          items: [
+            {
+              label: 'Voice Tracking',
+              link: '/overview/voice#troubleshooting',
+            },
+          ],
         },
         {
           label: 'Miscellaneous',
@@ -107,13 +127,12 @@ export default defineConfig({
           },
         },
         {
-          label: 'API',
+          label: 'Developers',
           badge: {
             text: 'Premium',
           },
-          autogenerate: {
-            directory: 'api',
-          },
+          collapsed: true,
+          items: [...openAPISidebarGroups],
         },
       ],
     }),

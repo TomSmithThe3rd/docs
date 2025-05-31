@@ -6,7 +6,9 @@
       <script value="dev" />
     </scripts>
     <node-interpreter value="project" />
-    <envs />
+    <envs>
+      <env name="NODE_TLS_REJECT_UNAUTHORIZED" value="0" />
+    </envs>
     <EXTENSION ID="com.intellij.lang.javascript.buildTools.npm.rc.StartBrowserRunConfigurationExtension">
       <browser start="true" url="http://localhost:4321" />
     </EXTENSION>
