@@ -1,5 +1,103 @@
 ---
 title: Crates
+description: Overview of Engauge's crates system.
 ---
 
-TODO
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { Steps } from '@astrojs/starlight/components';
+
+Engauge's crates system allows you to create highly configurable crate drops
+that periodically [(automatically or manually)](#criteria) drop goods like
+[XP](/overview/xp) or [currency](/overview/economy).
+
+<p>
+  Navigate to <Breadcrumbs path={['@dash', 'Your Server', 'Edit', 'Crates']} />{' '}
+  to create and edit your server's crates.
+</p>
+
+## Configuration
+
+Click the large `New Crate` button to create a new crate.
+
+### Announcement
+
+The announcement settings allow you to control what the crate will look like
+when it drops, as well as where it should drop.
+
+Some notable fields:
+
+- The **Message** field can be configured to use [formatting](/setup/formatting)
+  templates like level messages.
+- The **Announcement channel** field controls where the crate will "drop" when
+  it is time to drop. If you leave this option unset, then the crate will drop
+  in one of the contributing channels (see [Reward section](#reward)).
+
+### Reward
+
+The reward settings control what the crate actually gives your members when they
+claim it. Crates can drop XP, currency, or both.
+
+- Set **Maximum redeemers** if you'd like to make it so that the crate can only
+  be claimed by a certain number of people at a time. The default, `0`, means
+  there is no limit.
+- The **Contributing channels** represent the channels that "charge" this crate
+  (see [Criteria section](#criteria)).
+- The **Redemption time** is how many seconds the crate can be claimed for after
+  it is dropped.
+- The **Cooldown** is how many seconds the crate waits after its redemption time
+  to start charging again.
+
+:::tip
+
+Once a crate drops, it cannot be dropped again until the **redemption time**
+_and then_ the **cooldown time** have elapsed. If you want the crate to become
+droppable again immediately, set the **cooldown** to 0 seconds.
+
+:::
+
+### Criteria
+
+The criteria of the crate controls what "charges" it, or brings it closer to
+dropping automatically.
+
+- **None, drops manually:** the crate never drops automatically, and you must
+  always [drop it manually](#dropping-crates-manually).
+- **Drop after a specified amount of messages sent:** the crate charges with
+  each message that is sent in any of its [contributing channels](#reward). Only
+  messages that earned XP count (see
+  [message spam prevention](/overview/messages#spam-prevention)).
+- **Drop on a time interval:** the crate automatically drops a certain number of
+  minutes after it last became droppable. This means the crate will drop every
+  (redemption seconds + cooldown seconds + time interval minutes).
+
+  :::tip[Crates at Specific Times]
+
+  If you are trying to make a crate that drops daily (for example), keep in mind
+  that the **redemption time** and **cooldown** count towards this interval!
+
+  If your crate has a redemption time of 300 seconds (5 minutes) and a cooldown
+  of 60 seconds (1 minute), you will need to make the time interval equal to
+  `1440 - 5 - 1` = **1434** to make the crate drop at exactly the same time each
+  day.
+
+  :::
+
+### Copying crate settings
+
+You can copy a crate by clicking the blue copy button in the top left of the
+crate settings page. This creates a new crate with all settings copied from the
+original, but with a new name.
+
+## Dropping crates manually
+
+Crates can be dropped at any time.
+
+<Steps>
+
+1. Navigate to <Breadcrumbs path={['@dash', 'Your Server', 'Edit', 'Crates']} />
+
+2. Click the crate you'd like to drop
+
+3. Press the `Drop` button in the top right
+
+</Steps>

@@ -10,7 +10,7 @@ interface Props {
 
 const COMMON_LINKS: Record<string, string> = {
   '@dash': 'Dashboard:https://engau.ge/dash',
-}
+};
 
 const { path } = Astro.props;
 ---
@@ -40,6 +40,8 @@ const { path } = Astro.props;
     display: inline-flex;
     align-items: center;
     gap: 0.1rem;
+    white-space: nowrap;
+    vertical-align: baseline;
   }
 
   .divider {

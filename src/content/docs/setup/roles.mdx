@@ -1,5 +1,180 @@
 ---
-title: Role Rewards
+title: Roles
+description: Overview and explanation of roles and role rewards in Engauge.
 ---
 
-TODO
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+
+Engauge can configure certain roles to earn XP at different rates than normal.
+
+<p>
+  Engauge can also give and take roles in your server from members as they
+  [level up](/overview/xp). You can access the roles configuration page at
+  <Breadcrumbs path={['@dash', 'Your Server', 'Edit', 'Roles']} />.
+</p>
+
+## Permissions
+
+Engauge requires the **Manage Roles** permission to give and take roles from
+users. If this permission is not set, your role rewards will not function as
+expected.
+
+Moreover, Engauge's role needs to be higher in the hierarchy than the roles it
+is trying to give. For more details, see the
+[troubleshooting section](#troubleshooting).
+
+## Configuration
+
+### XP multiplier
+
+Roles can set an XP multiplier that controls if they get more or less XP than
+the normal rates.
+
+:::tip[Roles Exempt from Earning XP]
+
+If you'd like to make a role that cannot earn XP, set its XP multiplier to 0.
+
+:::
+
+XP multipliers can be any decimal number that is at least zero. By default, all
+roles have an XP multiplier of 1, which means they earn a standard amount of XP.
+An XP multiplier of 2 means that that role earns twice as much XP as normal.
+
+A member's XP multiplier is the **XP multiplier of their highest role**. If any
+of their roles contains a 0x multiplier, then that 0x multiplier is used
+instead.
+
+**XP multipliers do not stack.** The highest role in the hierarchy is used
+instead.
+
+### Level messages
+
+A role can be configured to have a separate level message from the default level
+message. This option uses the same [formatting](/setup/formatting) templates
+that regular level messages use.
+
+When a member levels up and earns a new level role, Engauge will use a level
+message (if available) of that new role.
+
+:::tip
+
+It's possible to only show level messages when a user levels up and earns a
+role, and not normally.
+
+<p>
+  To do this, navigate to{' '}
+  <Breadcrumbs path={['@dash', 'Your Server', 'Edit', 'Settings']} />. Then, set
+  the <b>Level message</b> option to be blank.
+
+</p>
+
+Now, you can set a role reward's level message to anything else. This will cause
+Engauge to only show the message when roles are earned.
+
+:::
+
+### Stacking
+
+Role stacking allows you to control how level roles stack with each other. For
+example, it allows you to control whether you want a user to have both a **Level
+5** role and a **Level 10** role at the same time.
+
+In your role settings page, you have three options for role stacking:
+
+- **Role stacking enabled:** This role is allowed to stack with all other level
+  roles.
+- **Role stacking disabled:** This role is _not_ allowed to stack with other
+  level roles, and will be removed as soon as the user levels up and gets a
+  higher-level role.
+- **Role stacking disabled with stacking group set:** Similar to the previous
+  option, this option prevents role stacking with higher-level roles, but **only
+  for some roles**.
+
+  You can set a "stacking group" by typing in the text box. By setting multiple
+  roles to use the same "stacking group," you can prevent roles from within that
+  group from stacking together.
+
+  This allows you to stack separate "groups" of roles, like separate progression
+  paths.
+
+#### Stacking use cases
+
+Below are some use cases for each of the stacking options;
+
+- **Role stacking enabled**
+  - Adequate for **permission roles**, like send images, talk in a new channel,
+    use emoji
+  - This will allow the user to keep the permission roles when they continue to
+    level up, and they will not be removed if they reach another level role that
+    is given at a higher level.
+- **Role stacking disabled**
+  - Adequate for **level number roles** (**Level 5**, **Level 10**, etc.)
+  - This pattern ensures the user always has the highest level role but none
+    beneath it.
+  - This also works great for level number roles with different names
+    (**Newbie**, **Regular**, **Frequenter**, **Top Chatter**, etc.)
+- **Role stacking disabled with a stack group**
+  - Multiple sets of level number/level name roles
+  - If you want to have both **Level 5**, **Level 10**, **Level 20** roles and
+    **Newbie**, **Regular**, **Frequenter** roles at separate levels, you can
+    use a stack group for each set of roles
+  - All level roles of one group (for example, **Level 5**, **Level 10**,
+    **Level 20**, etc.) must be given one group name, perhaps `levels`
+  - All level roles of the other group(s) (for example, **Newbie**, **Regular**,
+    **Frequenter**, etc.) must be given to a different unique name, perhaps
+    `level names`
+
+:::note[Caveat]
+
+If you have only a single role in a stacking group set to **role stacking
+disabled with a stack group**, it will act like **role stacking enabled** as
+there are no other roles in the group to prevent stacking.
+
+:::
+
+### Required roles
+
+You can set a role reward to "require" the member to have another role.
+
+If you set this field, the user _must have the role(s) you picked_ before
+Engauge will give them the role, if they meet the level requirement.
+
+You can use this to create separate progression tracks, like having your members
+"opt into" different progression trees.
+
+:::caution[Footgun]
+
+**Don't set the previous level role as required for the next.** Engauge handles
+successive level role logic differently. Only use this feature for required
+roles who you are expecting the user to have permanently.
+
+:::
+
+## Troubleshooting
+
+### Manage Roles permission
+
+Engauge needs the **Manage Roles** permission to manage member roles.
+
+### Role hierarchy
+
+In order for Engauge to give level roles, **Engauge's role must be higher than
+the level roles**.
+
+In your role settings, ensure the **Engauge** role is above the level roles.
+Drag it so that it is on top of the level roles.
+
+#### Sample role order
+
+1. Admin role
+2. **Engauge** (or another role Engauge has, with **Manage Roles**)
+3. Level 50\*
+4. Level 25\*
+5. Level 10\*
+6. Member
+
+_\* This is a level role._
+
+Notice how the **Engauge** role is above the starred (\*) level roles. If
+**Engauge** would be below the Level 10 role, Engauge would not be able to hand
+any of these level roles out.

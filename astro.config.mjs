@@ -117,6 +117,10 @@ export default defineConfig({
               label: 'Voice Tracking',
               link: '/overview/voice#troubleshooting',
             },
+            {
+              label: 'Level Roles',
+              link: '/setup/roles#troubleshooting',
+            },
           ],
         },
         {
