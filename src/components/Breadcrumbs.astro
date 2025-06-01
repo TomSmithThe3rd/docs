@@ -18,7 +18,9 @@ const { path } = Astro.props;
 <span class="breadcrumbs">
   {
     path.map((item, i) => {
-      const [name, link] = (COMMON_LINKS[item] ?? item).split(':');
+      const [name, ...parts] = (COMMON_LINKS[item] ?? item).split(':');
+      const link = parts.join(':');
+
       return (
         <>
           {i !== 0 && <Icon name="mdi:chevron-right" class="divider" />}
