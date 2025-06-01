@@ -11,6 +11,11 @@ import 'dotenv/config';
 
 // https://astro.build/config
 export default defineConfig({
+  redirects: {
+    '/': '/overview/intro',
+    '/voice': '/overview/voice',
+    '/roles': '/setup/roles#troubleshooting',
+  },
   markdown: {
     rehypePlugins: [rehypeMathJax],
     remarkPlugins: [remarkMath],
@@ -32,7 +37,7 @@ export default defineConfig({
       logo: {
         src: './src/assets/icon.svg',
       },
-      title: 'Engauge',
+      title: 'Engauge Docs',
       tableOfContents: false,
       social: [
         {
