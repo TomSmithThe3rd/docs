@@ -12,7 +12,6 @@ import 'dotenv/config';
 // https://astro.build/config
 export default defineConfig({
   redirects: {
-    '/': '/overview/intro',
     '/voice': '/overview/voice',
     '/roles': '/setup/roles#troubleshooting',
   },
@@ -21,6 +20,7 @@ export default defineConfig({
     remarkPlugins: [remarkMath],
   },
   integrations: [
+    icon(),
     starlight({
       plugins: [
         starlightOpenAPIPlugin([
@@ -45,6 +45,11 @@ export default defineConfig({
           label: 'GitHub',
           href: 'https://github.com/engauge-bot/docs',
         },
+        {
+          icon: 'discord',
+          label: 'Discord',
+          href: 'https://engau.ge/support',
+        },
       ],
       editLink: {
         baseUrl: 'https://github.com/engauge-bot/docs/edit/master',
@@ -60,7 +65,7 @@ export default defineConfig({
         {
           label: 'Overview',
           items: [
-            'overview/intro',
+            { label: 'Introduction', link: '/' },
             'overview/xp',
             'overview/leaderboard',
             'overview/messages',
@@ -145,6 +150,5 @@ export default defineConfig({
         },
       ],
     }),
-    icon(),
   ],
 });
