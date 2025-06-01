@@ -1,5 +1,26 @@
 ---
 title: Server Sites
+description: Overview of server sites in Engauge.
 ---
 
-TODO
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import PremiumRequired from '../../../components/PremiumRequired.astro';
+
+A **server site** is the set of pages tailored to your particular server. When a
+member visits the dashboard and clicks <Breadcrumbs path={['View']} /> on your
+server, they visit the server site.
+
+While visiting your server site, the title bar of the Engauge website will
+change to your server's name and icon.
+
+## Customization
+
+<PremiumRequired />
+
+At the moment, [Premium](/setup/premium) servers can customize a bio/description
+for their server, and it will be displayed on the front page of the server site.
+This can be done from the main <Breadcrumbs path={['@dash', 'Your Server',
+'Edit', 'Settings']} /> page.
+
+More customization is in the works, such as header backgrounds, themes, and
+layout options.

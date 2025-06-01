@@ -136,7 +136,7 @@ export default defineConfig({
             text: 'Premium',
           },
           collapsed: true,
-          items: [...openAPISidebarGroups],
+          items: ['api/overview', ...openAPISidebarGroups],
         },
       ],
     }),

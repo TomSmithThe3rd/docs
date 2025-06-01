@@ -1,15 +1,51 @@
 ---
 title: Shop
 sidebar:
-  order: 3
   badge:
     text: Premium
 ---
 
 import PremiumRequired from '../../../../components/PremiumRequired.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
 
 <PremiumRequired />
 
-TODO
+Engauge allows you to create a shop for your server, with custom items
+purchasable using your server's [currency](/setup/economy).
 
-## Transactions
+<p>
+  Navigate to <Breadcrumbs path={['@dash', 'Your Server', 'Edit', 'Shop']} /> to
+  access shop settings. You will need to enable the shop before your members can
+  view it.
+</p>
+
+## Shop items
+
+<p>
+  The heart of the shop is the items you add to it. Click{' '}
+  <Breadcrumbs path={['Edit items', '+']} /> to add an item to your shop.
+</p>
+
+### Configuration
+
+You can control the name, price, and description of your shop items. But more
+importantly, you can control what the item gives the member who purchases it:
+
+- **Give the purchaser some roles:** when a member purchases this item, they
+  will be given all roles you've defined.
+- **Give the purchaser some XP towards their level:** when a member purchases
+  this item, they'll get as much XP as you've set.
+- **Configure a custom reward:** functionally does nothing, but will log the
+  item and message to the [transactions channel](/setup/economy#transactions),
+  if you've configured one.
+
+  This allows you to manually fulfill an item request, like an external game or
+  other resource.
+
+## Use your shop
+
+<p>
+  Navigate to <Breadcrumbs path={['@dash', 'Your Server', 'View', 'Shop']} /> to
+  purchase shop items. At the moment, the only way to purchase shop items is
+  from the website, though a way to purchase items in-chat is planned.
+</p>

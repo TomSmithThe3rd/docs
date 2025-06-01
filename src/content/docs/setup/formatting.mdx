@@ -1,5 +1,34 @@
 ---
 title: Formatting
+description:
+  Comprehensive reference of available formatting templates in Engauge.
 ---
 
-TODO
+Formatters allow you to template the messages you use for level messages and
+crate drops. Below is a comprehensive reference of all available formatters for
+you to use, as well as checkmarks indicating which contexts they are available
+in.
+
+| Formatter            | Level message | Role level message | Crate | Description                                                    |
+| -------------------- | ------------- | ------------------ | ----- | -------------------------------------------------------------- |
+| `{guild-name}`       | ✅            | ✅                 | ✅    | The name of the server.                                        |
+| `{channel}`          | ✅            | ✅                 | ✅    | A clickable link to the channel.                               |
+| `{channel-name}`     | ✅            | ✅                 | ✅    | The name of the channel.                                       |
+| `{name}` or `{user}` | ✅            | ✅                 |       | The user's nickname, display name, or username, in that order. |
+| `{displayname}`      | ✅            | ✅                 |       | The user's display name or username (not nickname).            |
+| `{username}`         | ✅            | ✅                 |       | The user's username.                                           |
+| `{mention}`          | ✅            | ✅                 |       | A mention of the user.                                         |
+| `{level}`            | ✅            | ✅                 |       | The user's new level.                                          |
+| `{role}`             |               | ✅                 |       | The name of the new role the user has earned.                  |
+| `{role-mention}`     |               | ✅                 |       | A mention of the new role the user has earned.                 |
+| `{crate}`            |               |                    | ✅    | The name of the crate being dropped.                           |
+| `{xp}`               |               |                    | ✅    | The amount of XP being dropped.                                |
+| `{currency}`         |               |                    | ✅    | The amount of currency being dropped.                          |
+
+## Meta formatters
+
+Meta formatters are formatters that have some sort of functionality.
+
+| Formatter        | Description                                                                                                                                  |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `{random a;b;c}` | Randomly chooses any of `a`, `b`, or `c`. Any number of arguments are supported, i.e. `{random a;b}` and `{random a;b;c;d;e}` are all valid. |

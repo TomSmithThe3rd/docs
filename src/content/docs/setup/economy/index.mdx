@@ -1,7 +1,51 @@
 ---
 title: Economy
-sidebar:
-  order: 3
+description: Overview of Engauge's economy system.
 ---
 
-TODO
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+
+Engauge features a highly customizable economy system. For a more high-level
+overview, see [Economy](/overview/economy).
+
+<p>
+  To use economy features, they must first be enabled by checking <b>Enabled</b>{' '}
+  at <Breadcrumbs path={['@dash', 'Your Server', 'Edit', 'Economy']} />.
+</p>
+
+## Configuration
+
+You can choose to enable economy games. See [Games](/setup/economy/games) for
+more information.
+
+### Currency symbol
+
+The symbol Engauge's economy uses can be controlled. By default, the symbol is
+`E$`, meaning currency appears like **E$100**. Emojis are allowed.
+
+For example, you could change this to `€` to render your currency as **€100**.
+
+### Rates
+
+The **starting currency** and **currency on level up** options control how much
+currency you start with and how much you earn per level, respectively.
+
+### Transactions
+
+You can choose to set a **Transaction log channel**. This channel will have all
+transactions (through [/pay](/commands/pay) or through the
+[shop](/setup/economy/shop)) logged in real time.
+
+Enable or disable [/pay](/commands/pay) transactions with the **Allow
+transactions** option. You can also set whether to ping people on payment and a
+minimum for currency transfer here.
+
+## Resetting the economy
+
+You can reset the economy at the bottom of the page with the **Reset Economy**
+button.
+
+This operation will set everyones' currencies back down to how much they would
+have if they had not spent or were given any money. In other words, they will
+start at their **Starting currency** plus the **Currency on level up** for each
+of their levels.
