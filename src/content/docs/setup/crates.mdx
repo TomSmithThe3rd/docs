@@ -12,12 +12,9 @@ that periodically [(automatically or manually)](#criteria) drop goods like
 
 <p>
   Navigate to <Breadcrumbs path={['@dash', 'Your Server', 'Edit', 'Crates']} />{' '}
-  to create and edit your server's crates.
+  to create and edit your server's crates. Click the large{' '}
+  <Breadcrumbs path={['+']} /> button to create a new crate.
 </p>
-
-## Configuration
-
-Click the large `New Crate` button to create a new crate.
 
 ### Announcement
 
@@ -26,28 +23,55 @@ when it drops, as well as where it should drop.
 
 Some notable fields:
 
+- The **Preview** box will update with how your crate will look when dropping in
+  a channel. [Formatters](/setup/formatting) like `xp` and `currency` will
+  preview as the values configured for the crate.
 - The **Message** field can be configured to use [formatting](/setup/formatting)
   templates like level messages.
 - The **Announcement channel** field controls where the crate will "drop" when
   it is time to drop. If you leave this option unset, then the crate will drop
   in one of the contributing channels (see [Reward section](#reward)).
+- The **Image URL** field will only work with links to images on the web. We do
+  not support uploading images directly to Engauge to use in this field. Any
+  image hosting service will do as long as the service can provide you with a
+  direct link to the image.
 
 ### Reward
 
-The reward settings control what the crate actually gives your members when they
-claim it. Crates can drop XP, currency, or both.
+The reward settings control what the crate gives your members when they claim
+it, where the crate will be shown at drop time, for how long it will be
+available, and much more. Crates can drop [XP](/overview/xp),
+[currency](/setup/economy), or both.
 
-- Set **Maximum redeemers** if you'd like to make it so that the crate can only
-  be claimed by a certain number of people at a time. The default, `0`, means
-  there is no limit.
-- The **Contributing channels** represent the channels that "charge" this crate
-  (see [Criteria section](#criteria)).
-- The **Redemption time** is how many seconds the crate can be claimed for after
-  it is dropped.
-- The **Cooldown** is how many seconds the crate waits after its redemption time
-  to start charging again.
+:::caution[XP multiplier]
 
-:::tip
+Any XP multiplier a user might have at the time of redeeming a crate will also
+be applied to said crate.
+
+:::
+
+##### Maximum redeemers
+
+If you'd like to make it so that the crate can only be claimed by a certain
+number of people at a time. Setting this to `0` means there is no limit.
+
+##### Contributing channels
+
+Represents the channels that "charge" this crate. Leaving this blank will let
+all channels that count towards XP gain charge the crate. Channels excluded from
+XP gain will not charge the crate. see [Criteria section](#criteria)) for more
+info on crate charging.
+
+##### Redemption time
+
+How many seconds the crate can be claimed for after it is dropped.
+
+##### Cooldown
+
+How many seconds the crate waits after its redemption time to start charging
+again.
+
+:::tip[Crate cooldown]
 
 Once a crate drops, it cannot be dropped again until the **redemption time**
 _and then_ the **cooldown time** have elapsed. If you want the crate to become
@@ -60,28 +84,36 @@ droppable again immediately, set the **cooldown** to 0 seconds.
 The criteria of the crate controls what "charges" it, or brings it closer to
 dropping automatically.
 
-- **None, drops manually:** the crate never drops automatically, and you must
-  always [drop it manually](#dropping-crates-manually).
-- **Drop after a specified amount of messages sent:** the crate charges with
-  each message that is sent in any of its [contributing channels](#reward). Not
-  adding channels to the "contributing channels" section will allow all channels
-  on the server to charge the crate. Only messages that earned XP count (see
-  [message spam prevention](/overview/messages#spam-prevention)).
-- **Drop on a time interval:** the crate automatically drops a certain number of
-  minutes after it last became droppable. This means the crate will drop every
-  (redemption seconds + cooldown seconds + time interval minutes).
+##### None, drops manually
 
-  :::tip[Crates at Specific Times]
+The crate never drops automatically, and you must always
+[drop it manually](#dropping-crates-manually) through the dashboard.
 
-  If you are trying to make a crate that drops daily (for example), keep in mind
-  that the **redemption time** and **cooldown** count towards this interval!
+##### Drop after a specified amount of messages sent
 
-  If your crate has a redemption time of 300 seconds (5 minutes) and a cooldown
-  of 60 seconds (1 minute), you will need to make the time interval equal to
-  `1440 - 5 - 1` = **1434** to make the crate drop at exactly the same time each
-  day.
+The crate charges with each message that is sent in any of its
+[contributing channels](#reward). Not adding channels to the "contributing
+channels" section will allow all channels on the server to charge the crate.
+Only messages that earned XP count (see
+[message spam prevention](/overview/messages#spam-prevention)).
 
-  :::
+##### Drop on a time interval
+
+The crate automatically drops a certain number of minutes after it last became
+droppable. This means the crate will drop every (redemption seconds + cooldown
+seconds + time interval minutes).
+
+:::tip[Crates at Specific Times]
+
+If you are trying to make a crate that drops daily (for example), keep in mind
+that the **redemption time** and **cooldown** count towards this interval!
+
+If your crate has a redemption time of 300 seconds (5 minutes) and a cooldown of
+60 seconds (1 minute), you will need to make the time interval equal to
+`1440 - 5 - 1` = **1434** to make the crate drop at exactly the same time each
+day.
+
+:::
 
 ### Copying crate settings
 
